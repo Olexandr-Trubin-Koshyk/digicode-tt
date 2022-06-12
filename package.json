@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel ./src/index.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && parcel build ./src/index.html --public-url ./ --no-content-hash",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/Olexandr-Trubin-Koshyk/digicode-tt/issues"
   },
-  "homepage": "https://github.com/Olexandr-Trubin-Koshyk/digicode-tt#readme"
+  "homepage": "https://github.com/Olexandr-Trubin-Koshyk/digicode-tt#readme",
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "parcel": "^1.12.3"
+  }
 }

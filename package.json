@@ -2,7 +2,7 @@
   "name": "digicode-tt",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "parcel ./src/index.html --open",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,5 +24,9 @@
   "devDependencies": {
     "gh-pages": "^4.0.0",
     "parcel": "^1.12.3"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.42",
+    "pixi.js": "^6.4.2"
   }
 }

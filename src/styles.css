@@ -1,6 +1,7 @@
 body, h1 {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
@@ -14,19 +15,16 @@ body, h1 {
   flex-direction: column;
   align-items: center;
 }
-
 .mainArea__fields {
   display: flex;
   align-self: flex-start;
 }
-
 .mainArea__textField {
   padding: 12px;
   box-sizing: border-box;
   border: 1px solid #000;
   border-bottom: none;
 }
-
 .mainArea__textField--second-element {
   border-left: none;
 }
@@ -34,3 +32,5 @@ body, h1 {
 #canvas {
   border: 1px solid #000;
 }
+
+/*# sourceMappingURL=styles.css.map */

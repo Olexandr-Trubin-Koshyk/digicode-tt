@@ -1,0 +1,37 @@
+body, h1 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__fields {
+    display: flex;
+    align-self: flex-start;
+  }
+
+  &__textField {
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-bottom: none;
+  }
+
+  &__textField--second-element {
+    border-left: none;
+  }
+}
+
+#canvas {
+  border: 1px solid #000;
+}

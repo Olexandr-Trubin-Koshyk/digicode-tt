@@ -1,0 +1,2 @@
+body,h1{margin:0;padding:0}.container{justify-content:center}.container,.mainArea{display:flex;align-items:center}.mainArea{flex-direction:column}.mainArea__fields{display:flex;align-self:flex-start}.mainArea__textField{padding:12px;box-sizing:border-box;border:1px solid #000;border-bottom:none}.mainArea__textField--second-element{border-left:none}#canvas{border:1px solid #000}
+/*# sourceMappingURL=styles.8986bff4.css.map */

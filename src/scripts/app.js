@@ -11,8 +11,3 @@ var app = new pixi_js_1.Application({
 var scene = new GameScene_1.GameScene(app);
 app.stage.addChild(scene);
 scene.createTicker();
-var callback = function (event) {
-    console.log(event.data.getLocalPosition(app.stage));
-    var _a = event.data.getLocalPosition(app.stage), x = _a.x, y = _a.y;
-    scene.createShape(x, y);
-};

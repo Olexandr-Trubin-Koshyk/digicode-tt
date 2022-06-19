@@ -25,7 +25,7 @@ export class Shape extends PIXI.Graphics {
 
     this.shapeType = 'rectangle';
     this.beginFill(this.getRandomColor());
-    this.drawRect(this.x, this.y, w, h);
+    this.drawRect(0, 0, w, h);
     this.endFill();
     this.angle = this.generatedAngle;
     this.area = Math.floor(w * h);
@@ -36,7 +36,7 @@ export class Shape extends PIXI.Graphics {
 
     this.shapeType = 'circle';
     this.beginFill(this.getRandomColor());
-    this.drawCircle(this.x, this.y, r);
+    this.drawCircle(0, 0, r);
     this.endFill();
     this.area = Math.floor(3.14 * (r * r));
   }
@@ -61,18 +61,27 @@ export class Shape extends PIXI.Graphics {
 
   createEllipse() {
     const w = 20;
-    const h = 55;
+    const h = 56;
 
     this.shapeType = 'ellipse';
     this.beginFill(this.getRandomColor());
-    this.drawEllipse(this.x, this.y, w, h);
+    this.drawEllipse(0, 0, w, h);
     this.endFill();
     this.angle = this.generatedAngle;
+    this.area = Math.floor(3.14 * (20 * 56));
+    
   }
 
   createFiveSidesShape() {
-    const path = [this.x, this.y, this.x + 35, this.y + 35, this.x + 35, this.y + 70, this.x - 35, this.y + 70, this.x - 35, this.y + 35];
+    const path = [
+      0, 0, 
+      35, 35, 
+      35, 70, 
+      -35, 70, 
+      -35, 35
+    ];
 
+    this.shapeType = '5s shape';
     this.lineStyle(0);
     this.beginFill(this.getRandomColor());
     this.drawPolygon(path);
@@ -81,8 +90,16 @@ export class Shape extends PIXI.Graphics {
   }
 
   createSixSidesShape() {
-    const path = [this.x, this.y, this.x + 35, this.y + 35, this.x + 35, this.y + 70, this.x, this.y + 105, this.x - 35, this.y + 70, this.x -35, this.y + 35];
+    const path = [
+      0, 0, 
+      35, 35, 
+      35, 70, 
+      0, 105, 
+      -35, 70, 
+      -35, 35
+    ];
 
+    this.shapeType = '6s shape';
     this.lineStyle(0);
     this.beginFill(this.getRandomColor());
     this.drawPolygon(path);
@@ -103,14 +120,14 @@ export class Shape extends PIXI.Graphics {
       case rnd === 3:
         this.createTriangle();
         break;
-      // case rnd === 4: 
-      //   this.createEllipse();
-      //   break;
-      // case rnd === 5:
-      //   this.createFiveSidesShape();
-      //   break;
+      case rnd === 4: 
+        this.createEllipse();
+        break;
+      case rnd === 5:
+        this.createFiveSidesShape();
+        break;
       default:
-        this.createTriangle();
+        this.createSixSidesShape();
         break;
     }
   }

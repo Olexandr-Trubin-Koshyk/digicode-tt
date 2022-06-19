@@ -13,7 +13,7 @@ export class GameScene extends PIXI.Container {
     this.app = app;
     this.shapes = []
     this.shapesSpeed = 3;
-    this.shapesCount = 5;
+    this.shapesCount = 8;
     this.shapesArea = 0;
     this.interactive = true;
     this.hitArea = new PIXI.Rectangle(0, 0, 800, 600);
@@ -23,7 +23,9 @@ export class GameScene extends PIXI.Container {
   onPointerDown(event) {
     if (event.target === this) {
       const { x, y } = event.data.global;
-      this.createShape(x, y);
+      console.log(x, y);
+      
+      this.createShape(Math.floor(x), Math.floor(y));
     } else {
       const shapeType = event.target.shapeType;
 
@@ -39,7 +41,6 @@ export class GameScene extends PIXI.Container {
     while (this.shapes.length < this.shapesCount) {
       this.createShape(
           Math.floor(Math.random() * (this.app.screen.width)),
-          // 150,
           Math.floor(Math.random() * (this.app.screen.y - 400)),
       );
     }
@@ -51,6 +52,7 @@ export class GameScene extends PIXI.Container {
     this.shapesArea += shape.area;
     this.shapes.push(shape);
 
+    console.log(shape)
     this.addChild(shape);
   }
 

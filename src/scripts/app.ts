@@ -1,4 +1,4 @@
-import { Application, Rectangle } from "pixi.js";
+import { Application } from "pixi.js";
 import { GameScene } from "./GameScene";
 
 const app = new Application({
@@ -13,8 +13,3 @@ app.stage.addChild(scene);
 
 scene.createTicker();
 
-const callback = (event) => {
-  console.log(event.data.getLocalPosition(app.stage))
-  const {x, y} = event.data.getLocalPosition(app.stage);
-  scene.createShape(x, y)
-}

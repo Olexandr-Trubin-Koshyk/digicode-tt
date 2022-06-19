@@ -25,7 +25,7 @@ var GameScene = /** @class */ (function (_super) {
         _this.app = app;
         _this.shapes = [];
         _this.shapesSpeed = 3;
-        _this.shapesCount = 5;
+        _this.shapesCount = 8;
         _this.shapesArea = 0;
         _this.interactive = true;
         _this.hitArea = new PIXI.Rectangle(0, 0, 800, 600);
@@ -35,7 +35,8 @@ var GameScene = /** @class */ (function (_super) {
     GameScene.prototype.onPointerDown = function (event) {
         if (event.target === this) {
             var _a = event.data.global, x = _a.x, y = _a.y;
-            this.createShape(x, y);
+            console.log(x, y);
+            this.createShape(Math.floor(x), Math.floor(y));
         }
         else {
             var shapeType_1 = event.target.shapeType;
@@ -48,9 +49,7 @@ var GameScene = /** @class */ (function (_super) {
     };
     GameScene.prototype.createScene = function () {
         while (this.shapes.length < this.shapesCount) {
-            this.createShape(Math.floor(Math.random() * (this.app.screen.width)), 
-            // 150,
-            Math.floor(Math.random() * (this.app.screen.y - 400)));
+            this.createShape(Math.floor(Math.random() * (this.app.screen.width)), Math.floor(Math.random() * (this.app.screen.y - 400)));
         }
     };
     GameScene.prototype.createShape = function (x, y) {
@@ -58,6 +57,7 @@ var GameScene = /** @class */ (function (_super) {
         shape.createSelf();
         this.shapesArea += shape.area;
         this.shapes.push(shape);
+        console.log(shape);
         this.addChild(shape);
     };
     GameScene.prototype.destroyShape = function (shape) {

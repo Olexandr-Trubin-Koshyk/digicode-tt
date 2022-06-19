@@ -15,11 +15,11 @@ export class Shape extends PIXI.Graphics {
     this.shapeType = 'none';
   }
 
-  getRandomColor() {
+  private getRandomColor() {
     return Math.random() * 0xFFFFFF;
   }
 
-  createRectangle(): any {
+  private createRectangle(): any {
     const w = 60;
     const h = 80;
 
@@ -31,7 +31,7 @@ export class Shape extends PIXI.Graphics {
     this.area = Math.floor(w * h);
   }
   
-  createCircle(): any {
+  private createCircle(): any {
     const r = 25;
 
     this.shapeType = 'circle';
@@ -41,7 +41,7 @@ export class Shape extends PIXI.Graphics {
     this.area = Math.floor(3.14 * (r * r));
   }
   
-  createTriangle(): any {
+  private createTriangle(): any {
     let triangleWidth = 100;
     let triangleHeight = triangleWidth;
     let triangleHalfway = triangleWidth/2;
@@ -59,7 +59,7 @@ export class Shape extends PIXI.Graphics {
     this.area = Math.floor((triangleHeight * triangleHeight) * Math.sqrt(3) / 4);
   }
 
-  createEllipse() {
+  private createEllipse() {
     const w = 20;
     const h = 56;
 
@@ -72,7 +72,7 @@ export class Shape extends PIXI.Graphics {
     
   }
 
-  createFiveSidesShape() {
+  private createFiveSidesShape() {
     const path = [
       0, 0, 
       35, 35, 
@@ -89,7 +89,7 @@ export class Shape extends PIXI.Graphics {
     this.angle = this.generatedAngle;
   }
 
-  createSixSidesShape() {
+  private createSixSidesShape() {
     const path = [
       0, 0, 
       35, 35, 
@@ -107,7 +107,7 @@ export class Shape extends PIXI.Graphics {
     this.angle = this.generatedAngle;
   }
 
-  createSelf() {
+  private shapeRandomizer() {
     const rnd = Math.floor(Math.random() * 6);
 
     switch (true) {
@@ -130,5 +130,9 @@ export class Shape extends PIXI.Graphics {
         this.createSixSidesShape();
         break;
     }
+  }
+
+  public createShape() {
+    this.shapeRandomizer();
   }
 }

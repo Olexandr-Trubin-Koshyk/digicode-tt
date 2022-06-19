@@ -107,7 +107,7 @@ var Shape = /** @class */ (function (_super) {
         this.endFill();
         this.angle = this.generatedAngle;
     };
-    Shape.prototype.createSelf = function () {
+    Shape.prototype.shapeRandomizer = function () {
         var rnd = Math.floor(Math.random() * 6);
         switch (true) {
             case rnd === 1:
@@ -129,6 +129,9 @@ var Shape = /** @class */ (function (_super) {
                 this.createSixSidesShape();
                 break;
         }
+    };
+    Shape.prototype.createShape = function () {
+        this.shapeRandomizer();
     };
     return Shape;
 }(PIXI.Graphics));

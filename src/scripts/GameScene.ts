@@ -5,7 +5,7 @@ export class GameScene extends PIXI.Container {
   app: PIXI.Application;
   shapes: any[];
   shapesSpeed: number;
-  shapesCount: number;
+  shapesPerSecond: number;
   shapesArea: number;
 
   constructor(app: PIXI.Application) {
@@ -13,7 +13,7 @@ export class GameScene extends PIXI.Container {
     this.app = app;
     this.shapes = []
     this.shapesSpeed = 3;
-    this.shapesCount = 8;
+    this.shapesPerSecond = 3;
     this.shapesArea = 0;
     this.interactive = true;
     this.hitArea = new PIXI.Rectangle(0, 0, 800, 600);
@@ -23,7 +23,6 @@ export class GameScene extends PIXI.Container {
   onPointerDown(event) {
     if (event.target === this) {
       const { x, y } = event.data.global;
-      console.log(x, y);
       
       this.createShape(Math.floor(x), Math.floor(y));
     } else {
@@ -38,7 +37,7 @@ export class GameScene extends PIXI.Container {
   }
 
   createScene() {
-    while (this.shapes.length < this.shapesCount) {
+    for (let i = 0; i < this.shapesPerSecond; i++) {
       this.createShape(
           Math.floor(Math.random() * (this.app.screen.width)),
           Math.floor(Math.random() * (this.app.screen.y - 400)),
@@ -48,11 +47,10 @@ export class GameScene extends PIXI.Container {
 
   createShape(x: number, y: number) {
     const shape = new Shape(x, y);
-    shape.createSelf();
+    shape.createShape();
     this.shapesArea += shape.area;
     this.shapes.push(shape);
 
-    console.log(shape)
     this.addChild(shape);
   }
 
@@ -63,8 +61,17 @@ export class GameScene extends PIXI.Container {
   }
 
   createTicker() {
+    const FPS = 60;
+    let value = 0;
+    const step = 1;
+
     this.app.ticker.add(() => {
-      this.createScene()
+      value += step;
+
+      if (value % FPS === 0) {
+        this.createScene()
+      }
+
       for (let i = 0; i < this.shapes.length; i++) {
         const shape = this.shapes[i];
 

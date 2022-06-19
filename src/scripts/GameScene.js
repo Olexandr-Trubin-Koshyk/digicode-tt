@@ -25,7 +25,7 @@ var GameScene = /** @class */ (function (_super) {
         _this.app = app;
         _this.shapes = [];
         _this.shapesSpeed = 3;
-        _this.shapesCount = 8;
+        _this.shapesPerSecond = 3;
         _this.shapesArea = 0;
         _this.interactive = true;
         _this.hitArea = new PIXI.Rectangle(0, 0, 800, 600);
@@ -35,7 +35,6 @@ var GameScene = /** @class */ (function (_super) {
     GameScene.prototype.onPointerDown = function (event) {
         if (event.target === this) {
             var _a = event.data.global, x = _a.x, y = _a.y;
-            console.log(x, y);
             this.createShape(Math.floor(x), Math.floor(y));
         }
         else {
@@ -48,16 +47,15 @@ var GameScene = /** @class */ (function (_super) {
         }
     };
     GameScene.prototype.createScene = function () {
-        while (this.shapes.length < this.shapesCount) {
+        for (var i = 0; i < this.shapesPerSecond; i++) {
             this.createShape(Math.floor(Math.random() * (this.app.screen.width)), Math.floor(Math.random() * (this.app.screen.y - 400)));
         }
     };
     GameScene.prototype.createShape = function (x, y) {
         var shape = new Shape_1.Shape(x, y);
-        shape.createSelf();
+        shape.createShape();
         this.shapesArea += shape.area;
         this.shapes.push(shape);
-        console.log(shape);
         this.addChild(shape);
     };
     GameScene.prototype.destroyShape = function (shape) {
@@ -67,8 +65,14 @@ var GameScene = /** @class */ (function (_super) {
     };
     GameScene.prototype.createTicker = function () {
         var _this = this;
+        var FPS = 60;
+        var value = 0;
+        var step = 1;
         this.app.ticker.add(function () {
-            _this.createScene();
+            value += step;
+            if (value % FPS === 0) {
+                _this.createScene();
+            }
             for (var i = 0; i < _this.shapes.length; i++) {
                 var shape = _this.shapes[i];
                 if (shape.y > _this.app.screen.height + 200) {

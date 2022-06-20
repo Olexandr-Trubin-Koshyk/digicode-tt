@@ -15,16 +15,16 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.GameScene = void 0;
+exports.GameArea = void 0;
 var PIXI = require("pixi.js");
 var Shape_1 = require("./Shape");
-var GameScene = /** @class */ (function (_super) {
-    __extends(GameScene, _super);
-    function GameScene(app) {
+var GameArea = /** @class */ (function (_super) {
+    __extends(GameArea, _super);
+    function GameArea(app) {
         var _this = _super.call(this) || this;
         _this.app = app;
         _this.shapes = [];
-        _this.shapesSpeed = 3;
+        _this.shapesGravity = 5;
         _this.shapesPerSecond = 3;
         _this.shapesArea = 0;
         _this.interactive = true;
@@ -32,7 +32,10 @@ var GameScene = /** @class */ (function (_super) {
         _this.on('pointerdown', _this.onPointerDown, _this);
         return _this;
     }
-    GameScene.prototype.onPointerDown = function (event) {
+    GameArea.prototype.controlGravity = function () {
+        this.shapesPerSecond += 1;
+    };
+    GameArea.prototype.onPointerDown = function (event) {
         if (event.target === this) {
             var _a = event.data.global, x = _a.x, y = _a.y;
             this.createShape(Math.floor(x), Math.floor(y));
@@ -46,27 +49,27 @@ var GameScene = /** @class */ (function (_super) {
             });
         }
     };
-    GameScene.prototype.createScene = function () {
+    GameArea.prototype.createScene = function () {
         for (var i = 0; i < this.shapesPerSecond; i++) {
             this.createShape(Math.floor(Math.random() * (this.app.screen.width)), Math.floor(Math.random() * (this.app.screen.y - 400)));
         }
     };
-    GameScene.prototype.createShape = function (x, y) {
+    GameArea.prototype.createShape = function (x, y) {
         var shape = new Shape_1.Shape(x, y);
         shape.createShape();
         this.shapesArea += shape.area;
         this.shapes.push(shape);
         this.addChild(shape);
     };
-    GameScene.prototype.destroyShape = function (shape) {
+    GameArea.prototype.destroyShape = function (shape) {
         this.shapes = this.shapes.filter(function (el) { return el !== shape; });
         this.shapesArea -= shape.area;
         shape.destroy();
     };
-    GameScene.prototype.createTicker = function () {
+    GameArea.prototype.createTicker = function () {
         var _this = this;
-        var FPS = 60;
         var value = 0;
+        var FPS = 60;
         var step = 1;
         this.app.ticker.add(function () {
             value += step;
@@ -79,13 +82,13 @@ var GameScene = /** @class */ (function (_super) {
                     _this.destroyShape(shape);
                 }
                 else {
-                    shape.y += _this.shapesSpeed;
+                    shape.y += _this.shapesGravity;
                 }
             }
             document.getElementById("shapes").innerHTML = "Number of current shapes: ".concat(_this.shapes.length);
             document.getElementById("area").innerHTML = "Surface area occupied by shapes: ".concat(_this.shapesArea);
         });
     };
-    return GameScene;
+    return GameArea;
 }(PIXI.Container));
-exports.GameScene = GameScene;
+exports.GameArea = GameArea;

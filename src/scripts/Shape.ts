@@ -1,84 +1,92 @@
 import * as PIXI from "pixi.js";
 
+const PI = Math.PI;
+const ANGLE = 360;
+
 export class Shape extends PIXI.Graphics {
   color: number;
   generatedAngle: number;
   area: number;
+  interactive: boolean;
   shapeType: 'none' | 'rectangle' | 'circle' | 'ellipse' | 'triangle' | '5s shape' | '6s shape';
+  
   constructor(x: number, y: number) {
     super();
     this.x = x;
     this.y = y;
-    this.generatedAngle = Math.floor(Math.random() * 359);
+    this.generatedAngle = Math.floor(Math.random() * ANGLE);
     this.area = 0;
     this.interactive = true;
     this.shapeType = 'none';
   }
 
-  private getRandomColor() {
-    return Math.random() * 0xFFFFFF;
+  public getRandomColor() {
+    return Math.random() * 0xffffff;
   }
 
-  private createRectangle(): any {
-    const w = 60;
-    const h = 80;
+  private createRectangle(): void {
+    const width = 60;
+    const height = 80;
 
     this.shapeType = 'rectangle';
     this.beginFill(this.getRandomColor());
-    this.drawRect(0, 0, w, h);
+    this.drawRect(0, 0, width, height);
     this.endFill();
     this.angle = this.generatedAngle;
-    this.area = Math.floor(w * h);
+    this.area = Math.floor(width * height);
   }
   
-  private createCircle(): any {
-    const r = 25;
+  private createCircle(): void {
+    const radius = 25;
 
     this.shapeType = 'circle';
     this.beginFill(this.getRandomColor());
-    this.drawCircle(0, 0, r);
+    this.drawCircle(0, 0, radius);
     this.endFill();
-    this.area = Math.floor(3.14 * (r * r));
+    this.area = Math.floor(PI * Math.pow(radius, 2));
   }
   
-  private createTriangle(): any {
-    let triangleWidth = 100;
-    let triangleHeight = triangleWidth;
-    let triangleHalfway = triangleWidth/2;
+  private createTriangle(): void {
+    let width = 100;
+    let height = width;
+    let halfWidth = width / 2;
 
     this.shapeType = 'triangle';
-    // draw triangle 
     this.beginFill(this.getRandomColor());
     this.lineStyle(0, 0xFF0000, 1);
-    this.moveTo(triangleWidth, 0);
-    this.lineTo(triangleHalfway, triangleHeight); 
+    this.moveTo(width, 0);
+    this.lineTo(halfWidth, height); 
     this.lineTo(0, 0);
-    this.lineTo(triangleHalfway, 0);
+    this.lineTo(halfWidth, 0);
     this.endFill();
+
     this.angle = this.generatedAngle;
-    this.area = Math.floor((triangleHeight * triangleHeight) * Math.sqrt(3) / 4);
+    this.area = Math.floor(Math.pow(height, 2) * Math.sqrt(3) / 4);
   }
 
-  private createEllipse() {
-    const w = 20;
-    const h = 56;
+  private createEllipse(): void {
+    const width = 20;
+    const height = 56;
 
     this.shapeType = 'ellipse';
     this.beginFill(this.getRandomColor());
-    this.drawEllipse(0, 0, w, h);
+    this.drawEllipse(0, 0, width, height);
     this.endFill();
     this.angle = this.generatedAngle;
-    this.area = Math.floor(3.14 * (20 * 56));
-    
+    this.area = Math.floor(PI * (width * height));
   }
 
-  private createFiveSidesShape() {
+  private createFiveSidesShape(): void {
+    const lineX = 35;
+    const lineY = 35;
+    const sides = 5;
+
     const path = [
       0, 0, 
-      35, 35, 
-      35, 70, 
-      -35, 70, 
-      -35, 35
+      lineX, lineY, 
+      lineX, lineY * 2, 
+      -lineX, lineY * 2, 
+      -lineX, lineY
     ];
 
     this.shapeType = '5s shape';
@@ -87,16 +95,25 @@ export class Shape extends PIXI.Graphics {
     this.drawPolygon(path);
     this.endFill();
     this.angle = this.generatedAngle;
+
+    const rectArea = lineX * (2 * lineY);
+    const triArea = (lineX * lineY) / 2;
+
+    this.area = Math.floor(rectArea + triArea);
   }
 
-  private createSixSidesShape() {
+  private createSixSidesShape(): void {
+    const lineX = 35;
+    const lineY = 35;
+    const sides = 6;
+
     const path = [
       0, 0, 
-      35, 35, 
-      35, 70, 
-      0, 105, 
-      -35, 70, 
-      -35, 35
+      lineX, lineY, 
+      lineX, lineY * 2, 
+      0, lineY * 3, 
+      -lineX, lineY * 2, 
+      -lineX, lineY
     ];
 
     this.shapeType = '6s shape';
@@ -105,6 +122,11 @@ export class Shape extends PIXI.Graphics {
     this.drawPolygon(path);
     this.endFill();
     this.angle = this.generatedAngle;
+
+    const rectArea = lineX * (2 * lineY);
+    const triArea = (lineX * lineY) / 2;
+
+    this.area = Math.floor(rectArea + 2 * triArea);
   }
 
   private shapeRandomizer() {

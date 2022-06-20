@@ -11,6 +11,9 @@ var app = new pixi_js_1.Application({
 var scene = new GameArea_1.GameArea(app);
 app.stage.addChild(scene);
 scene.createTicker();
-var controlGravity = function (event) {
-    console.log(event);
-};
+// function controlGravity() {
+//   const shape = new RectangleShape(100, 100);
+//   shape.initShape();
+//   app.stage.addChild(shape);
+// }
+// controlGravity();

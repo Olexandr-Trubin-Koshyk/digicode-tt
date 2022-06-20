@@ -15,26 +15,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.BasicShape = void 0;
-var PIXI = require("pixi.js");
-var variables_1 = require("./variables");
-var BasicShape = /** @class */ (function (_super) {
-    __extends(BasicShape, _super);
-    function BasicShape(x, y) {
-        var _this = _super.call(this) || this;
-        _this.x = x;
-        _this.y = y;
-        _this.area = 0;
-        _this.interactive = true;
-        _this.shapeType = 'basic';
+exports.CircleShape = void 0;
+var BasicShape_1 = require("../BasicShape");
+var variables_1 = require("../variables");
+var CircleShape = /** @class */ (function (_super) {
+    __extends(CircleShape, _super);
+    function CircleShape(x, y) {
+        var _this = _super.call(this, x, y) || this;
+        _this.shapeType = 'circle';
         return _this;
     }
-    BasicShape.prototype.getRandomColor = function () {
-        return Math.random() * 0xffffff;
+    CircleShape.prototype.calculateArea = function (r) {
+        return Math.floor(variables_1.PI * Math.pow(r, 2));
     };
-    BasicShape.prototype.generateAngle = function () {
-        return Math.floor(Math.random() * variables_1.ANGLE);
+    CircleShape.prototype.initShape = function () {
+        var radius = 25;
+        this.beginFill(this.getRandomColor());
+        this.drawCircle(0, 0, radius);
+        this.endFill();
+        this.area = this.calculateArea(radius);
     };
-    return BasicShape;
-}(PIXI.Graphics));
-exports.BasicShape = BasicShape;
+    return CircleShape;
+}(BasicShape_1.BasicShape));
+exports.CircleShape = CircleShape;

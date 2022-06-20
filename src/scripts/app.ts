@@ -1,5 +1,6 @@
 import { Application } from "pixi.js";
 import { GameArea } from "./GameArea";
+import { RectangleShape } from "./Shapes/RectangleShape";
 
 const app = new Application({
   width: 800,
@@ -13,7 +14,11 @@ app.stage.addChild(scene);
 
 scene.createTicker();
 
-const controlGravity = (event) => {
-  console.log(event)
-}
+// function controlGravity() {
+//   const shape = new RectangleShape(100, 100);
+//   shape.initShape();
+//   app.stage.addChild(shape);
+// }
+
+// controlGravity();
 

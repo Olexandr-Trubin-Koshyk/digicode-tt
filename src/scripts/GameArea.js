@@ -17,7 +17,12 @@ var __extends = (this && this.__extends) || (function () {
 exports.__esModule = true;
 exports.GameArea = void 0;
 var PIXI = require("pixi.js");
-var Shape_1 = require("./Shape");
+var CircleShape_1 = require("./Shapes/CircleShape");
+var EllipseShape_1 = require("./Shapes/EllipseShape");
+var FiveSidesShape_1 = require("./Shapes/FiveSidesShape");
+var RectangleShape_1 = require("./Shapes/RectangleShape");
+var SixSidesShape_1 = require("./Shapes/SixSidesShape");
+var TriangleShape_1 = require("./Shapes/TriangleShape");
 var GameArea = /** @class */ (function (_super) {
     __extends(GameArea, _super);
     function GameArea(app) {
@@ -32,9 +37,6 @@ var GameArea = /** @class */ (function (_super) {
         _this.on('pointerdown', _this.onPointerDown, _this);
         return _this;
     }
-    GameArea.prototype.controlGravity = function () {
-        this.shapesPerSecond += 1;
-    };
     GameArea.prototype.onPointerDown = function (event) {
         if (event.target === this) {
             var _a = event.data.global, x = _a.x, y = _a.y;
@@ -49,14 +51,31 @@ var GameArea = /** @class */ (function (_super) {
             });
         }
     };
-    GameArea.prototype.createScene = function () {
+    GameArea.prototype.generateShapesPerSec = function () {
         for (var i = 0; i < this.shapesPerSecond; i++) {
             this.createShape(Math.floor(Math.random() * (this.app.screen.width)), Math.floor(Math.random() * (this.app.screen.y - 400)));
         }
     };
+    GameArea.prototype.shapeRandomizer = function (x, y) {
+        var rnd = Math.floor(Math.random() * 6);
+        switch (true) {
+            case rnd === 1:
+                return new RectangleShape_1.RectangleShape(x, y);
+            case rnd === 2:
+                return new CircleShape_1.CircleShape(x, y);
+            case rnd === 3:
+                return new EllipseShape_1.EllipseShape(x, y);
+            case rnd === 4:
+                return new TriangleShape_1.TriangleShape(x, y);
+            case rnd === 5:
+                return new FiveSidesShape_1.FiveSidesShape(x, y);
+            default:
+                return new SixSidesShape_1.SixSidesShape(x, y);
+        }
+    };
     GameArea.prototype.createShape = function (x, y) {
-        var shape = new Shape_1.Shape(x, y);
-        shape.createShape();
+        var shape = this.shapeRandomizer(x, y);
+        shape.initShape();
         this.shapesArea += shape.area;
         this.shapes.push(shape);
         this.addChild(shape);
@@ -74,7 +93,7 @@ var GameArea = /** @class */ (function (_super) {
         this.app.ticker.add(function () {
             value += step;
             if (value % FPS === 0) {
-                _this.createScene();
+                _this.generateShapesPerSec();
             }
             for (var i = 0; i < _this.shapes.length; i++) {
                 var shape = _this.shapes[i];

@@ -15,26 +15,27 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.BasicShape = void 0;
-var PIXI = require("pixi.js");
-var variables_1 = require("./variables");
-var BasicShape = /** @class */ (function (_super) {
-    __extends(BasicShape, _super);
-    function BasicShape(x, y) {
-        var _this = _super.call(this) || this;
-        _this.x = x;
-        _this.y = y;
-        _this.area = 0;
-        _this.interactive = true;
-        _this.shapeType = 'basic';
+exports.RectangleShape = void 0;
+var BasicShape_1 = require("../BasicShape");
+var RectangleShape = /** @class */ (function (_super) {
+    __extends(RectangleShape, _super);
+    function RectangleShape(x, y) {
+        var _this = _super.call(this, x, y) || this;
+        _this.shapeType = 'rectangle';
         return _this;
     }
-    BasicShape.prototype.getRandomColor = function () {
-        return Math.random() * 0xffffff;
+    RectangleShape.prototype.calculateArea = function (w, h) {
+        return Math.floor(w * h);
     };
-    BasicShape.prototype.generateAngle = function () {
-        return Math.floor(Math.random() * variables_1.ANGLE);
+    RectangleShape.prototype.initShape = function () {
+        var width = 60;
+        var height = 80;
+        this.beginFill(this.getRandomColor());
+        this.drawRect(0, 0, width, height);
+        this.endFill();
+        this.angle = this.generateAngle();
+        this.area = this.calculateArea(width, height);
     };
-    return BasicShape;
-}(PIXI.Graphics));
-exports.BasicShape = BasicShape;
+    return RectangleShape;
+}(BasicShape_1.BasicShape));
+exports.RectangleShape = RectangleShape;

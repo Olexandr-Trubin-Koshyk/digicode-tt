@@ -27,8 +27,22 @@ body, h1 {
     border-bottom: none;
   }
 
-  &__textField--second-element {
+  &__textField--secondElement {
     border-left: none;
+  }
+
+  &__controls {
+    align-self: start;
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    gap: 30px;
+  }
+}
+
+.btn {
+  &:focus {
+    outline: none;
   }
 }
 

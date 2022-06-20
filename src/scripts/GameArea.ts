@@ -1,26 +1,38 @@
 import * as PIXI from "pixi.js";
+import { IHitArea } from "pixi.js";
 import { Shape } from "./Shape";
 
-export class GameScene extends PIXI.Container {
+export class GameArea extends PIXI.Container {
   app: PIXI.Application;
-  shapes: any[];
-  shapesSpeed: number;
+  shapes: Shape[];
+  shapesGravity: number;
   shapesPerSecond: number;
+  interactive: boolean;
   shapesArea: number;
+  hitArea: IHitArea;
+  on: (
+    event: string | symbol, 
+    fn: (e: any) => void, 
+    context?: any
+  ) => this;
 
   constructor(app: PIXI.Application) {
     super();
     this.app = app;
     this.shapes = []
-    this.shapesSpeed = 3;
+    this.shapesGravity = 5;
     this.shapesPerSecond = 3;
     this.shapesArea = 0;
     this.interactive = true;
     this.hitArea = new PIXI.Rectangle(0, 0, 800, 600);
-    this.on('pointerdown', this.onPointerDown, this)
+    this.on('pointerdown', this.onPointerDown, this);
   } 
 
-  onPointerDown(event) {
+  controlGravity() {
+    this.shapesPerSecond += 1;
+  }
+
+  onPointerDown(event: any): void {
     if (event.target === this) {
       const { x, y } = event.data.global;
       
@@ -36,7 +48,7 @@ export class GameScene extends PIXI.Container {
     }  
   }
 
-  createScene() {
+  createScene(): void {
     for (let i = 0; i < this.shapesPerSecond; i++) {
       this.createShape(
           Math.floor(Math.random() * (this.app.screen.width)),
@@ -45,7 +57,7 @@ export class GameScene extends PIXI.Container {
     }
   } 
 
-  createShape(x: number, y: number) {
+  createShape(x: number, y: number): void {
     const shape = new Shape(x, y);
     shape.createShape();
     this.shapesArea += shape.area;
@@ -54,15 +66,15 @@ export class GameScene extends PIXI.Container {
     this.addChild(shape);
   }
 
-  destroyShape(shape: Shape) {
+  destroyShape(shape: Shape): void {
     this.shapes = this.shapes.filter(el => el !== shape);
     this.shapesArea -= shape.area; 
     shape.destroy();
   }
 
-  createTicker() {
-    const FPS = 60;
+  createTicker(): void {
     let value = 0;
+    const FPS = 60;
     const step = 1;
 
     this.app.ticker.add(() => {
@@ -78,7 +90,7 @@ export class GameScene extends PIXI.Container {
         if (shape.y > this.app.screen.height + 200) {
           this.destroyShape(shape);
         } else {
-          shape.y += this.shapesSpeed;
+          shape.y += this.shapesGravity;
         } 
       }
 

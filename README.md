@@ -29,13 +29,20 @@
 </ul>
 <h3>Tech stack:</h3>
 <ul>
-  <li><code>PixiJS v6.4.2</code></li>
+  <li><code>PixiJS</code></li>
    <li><code>TypeScript</code></li>
   <li><code>JavaScript</code></li>
   <li><code>SCSS</code></li>
   <li><code>CSS</code></li>
   <li><code>Bootstrap</code></li>
   <li><code>HTML</code></li>
+</ul>
+<h2>Local development</h2>
+<h3>Dependencies</h3>
+<ul>
+  <li>Node <code>v17.0.42</code></li>
+  <li>NPM <code>v6.14.12</code></li>
+  <li>PixiJS <code>v6.4.2</code></li>
 </ul>
 <h3>How to install</h3>
 <ul>

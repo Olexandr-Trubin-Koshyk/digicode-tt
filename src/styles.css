@@ -8,6 +8,7 @@ body, h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 12px;
 }
 
 .mainArea {
@@ -35,11 +36,18 @@ body, h1 {
   align-self: start;
   display: flex;
   flex-direction: row;
+  padding-top: 4px;
   width: 60%;
   gap: 30px;
 }
 
+.input-group-btn {
+  margin-right: 6px;
+}
+
 .btn:focus {
+  background-color: inherit;
+  color: inherit;
   outline: none;
 }
 

@@ -4,7 +4,6 @@ import { FiveSidesShape } from "./models/Shapes/FiveSidesShape";
 import { RectangleShape } from "./models/Shapes/RectangleShape";
 import { SixSidesShape } from "./models/Shapes/SixSidesShape";
 import { TriangleShape } from "./models/Shapes/TriangleShape";
-import { Application, IHitArea, Rectangle, Ticker } from "pixi.js";
 
 export type OperationType = 'increment' | 'decrement';
 

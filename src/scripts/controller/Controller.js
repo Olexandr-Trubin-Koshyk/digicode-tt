@@ -28,11 +28,36 @@ var Controller = /** @class */ (function (_super) {
         _this.interactive = true;
         _this.hitArea = new PIXI.Rectangle(0, 0, 800, 600);
         _this.on('pointerdown', _this.onPointerDown, _this);
+        _this.addEvents();
         return _this;
     }
+    Controller.prototype.addEvents = function () {
+        this.view.gravityDecrement.onclick = this.onGravityDecrement.bind(this);
+        this.view.gravityIncrement.onclick = this.onGravityincrement.bind(this);
+        this.view.shapesPerSecDecrement.onclick = this.onShapesPerSecDecrement.bind(this);
+        this.view.shapesPerSecIncrement.onclick = this.onShapesPerSecIncrement.bind(this);
+    };
+    Controller.prototype.onGravityDecrement = function () {
+        this.onGravityChange('decrement');
+    };
+    Controller.prototype.onGravityincrement = function () {
+        this.onGravityChange('increment');
+    };
+    Controller.prototype.onShapesPerSecDecrement = function () {
+        this.onShapesPerSecChange('decrement');
+    };
+    Controller.prototype.onShapesPerSecIncrement = function () {
+        this.onShapesPerSecChange('increment');
+    };
+    Controller.prototype.onGravityChange = function (operation) {
+        this.model.changeGravity(operation);
+    };
+    Controller.prototype.onShapesPerSecChange = function (operation) {
+        this.model.changeShapesPerSec(operation);
+    };
     Controller.prototype.generateShapesPerSec = function () {
         for (var i = 0; i < this.model.shapesPerSecond; i++) {
-            this.addShape(Math.floor((Math.random() * (this.view.app.screen.width - offsetX)) + offsetX / 2), Math.floor(Math.random() * (this.view.app.screen.y - offsetY)));
+            this.addShape(Math.floor((Math.random() * (this.view.appScreen.width - offsetX)) + offsetX / 2), Math.floor(Math.random() * (this.view.appScreen.y - offsetY)));
         }
     };
     Controller.prototype.onPointerDown = function (event) {
@@ -58,14 +83,14 @@ var Controller = /** @class */ (function (_super) {
         var value = 0;
         var FPS = 60;
         var step = 1;
-        this.view.app.ticker.add(function () {
+        this.view.appTicker.add(function () {
             value += step;
             if (value % FPS === 0) {
                 _this.generateShapesPerSec();
             }
             for (var i = 0; i < _this.model.shapes.length; i++) {
                 var shape = _this.model.shapes[i];
-                if (shape.y > _this.view.app.screen.height + 200) {
+                if (shape.y > _this.view.appScreen.height + 200) {
                     _this.model.destroyShape(shape);
                 }
                 else {
@@ -73,6 +98,7 @@ var Controller = /** @class */ (function (_super) {
                 }
             }
             _this.view.updShapesAndArea(_this.model.shapes.length, _this.model.shapesArea);
+            _this.view.updateControls(_this.model.shapesPerSecond, _this.model.shapesGravity);
         });
     };
     return Controller;

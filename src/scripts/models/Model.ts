@@ -1,11 +1,10 @@
-import * as PIXI from "pixi.js";
 import { CircleShape } from "./Shapes/CircleShape";
 import { EllipseShape } from "./Shapes/EllipseShape";
 import { FiveSidesShape } from "./Shapes/FiveSidesShape";
 import { RectangleShape } from "./Shapes/RectangleShape";
 import { SixSidesShape } from "./Shapes/SixSidesShape";
 import { TriangleShape } from "./Shapes/TriangleShape";
-import { Shape } from "../types";
+import { OperationType, Shape } from "../types";
 
 export class Model {
   shapes: Shape[];
@@ -15,12 +14,16 @@ export class Model {
 
   constructor() {
     this.shapes = [];
-    this.shapesGravity = 5;
+    this.shapesGravity = 3;
     this.shapesPerSecond = 3;
     this.shapesArea = 0;
+
     this.createShape = this.createShape.bind(this);
     this.destroyShape = this.destroyShape.bind(this);
     this.moveShape = this.moveShape.bind(this);
+
+    this.changeGravity = this.changeGravity.bind(this);
+    this.changeShapesPerSec = this.changeShapesPerSec.bind(this);
   } 
 
   public shapeRandomizer(x: number, y: number): Shape {
@@ -61,27 +64,15 @@ export class Model {
     shape.destroy();
   }
 
-  // increaseGravity() {
-  //   this.shapesGravity += 1;
-  // }
+  private changeGravity(operation: OperationType) {
+    operation === 'increment' 
+      ? this.shapesGravity += 1 
+      : (this.shapesGravity > 0 ? this.shapesGravity -= 1 : this.shapesGravity)
+  }
 
-  // decreaseGravity() {
-  //   if (this.shapesGravity > 1) {
-  //     this.shapesGravity -= 1;
-  //   } else {
-  //     return;
-  //   }
-  // }
-
-  // increaseShapesPerSec() {
-  //   this.shapesPerSecond += 1;
-  // }
-
-  // decreaseShapesPerSecy() {
-  //   if (this.shapesPerSecond > 1) {
-  //     this.shapesPerSecond -= 1;
-  //   } else {
-  //     return;
-  //   }
-  // }
+  private changeShapesPerSec(operation: OperationType) {
+    operation === 'increment' 
+      ? this.shapesPerSecond += 1
+      : (this.shapesPerSecond > 0 ? this.shapesPerSecond -= 1 : this.shapesPerSecond)
+  }
 }

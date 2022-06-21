@@ -11,7 +11,7 @@ var app = new pixi_js_1.Application({
     view: document.getElementById("canvas")
 });
 var model = new Model_1.Model();
-var view = new View_1.View(app);
+var view = new View_1.View(app.screen, app.ticker);
 var controller = new Controller_1.Controller(view, model);
 app.stage.addChild(controller);
 controller.createTicker();

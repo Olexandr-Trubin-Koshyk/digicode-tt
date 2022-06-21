@@ -74,10 +74,10 @@ export class Controller extends PIXI.Container {
       
       this.addShape(Math.floor(x), Math.floor(y));
     } else {
-      const shapeType = event.target.shapeType;
+      const shapeType = event.target.constructor.name;
 
       this.model.shapes.map((el: Shape) => {
-        if (el.shapeType === shapeType) {
+        if (el.constructor.name === shapeType) {
           el.tint = el.getRandomColor();
         }       
       })  

@@ -4,7 +4,6 @@ import { PI } from "../../variables";
 export class CircleShape extends BasicShape {
   constructor(x: number, y: number) {
     super(x, y);
-    this.shapeType = 'circle';
   }
 
   private calculateArea(r: number) {

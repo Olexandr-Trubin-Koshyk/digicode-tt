@@ -21,9 +21,7 @@ var variables_1 = require("../../variables");
 var EllipseShape = /** @class */ (function (_super) {
     __extends(EllipseShape, _super);
     function EllipseShape(x, y) {
-        var _this = _super.call(this, x, y) || this;
-        _this.shapeType = 'ellipse';
-        return _this;
+        return _super.call(this, x, y) || this;
     }
     EllipseShape.prototype.calculateArea = function (w, h) {
         return Math.floor(variables_1.PI * (w * h));

@@ -20,9 +20,7 @@ var BasicShape_1 = require("../BasicShape");
 var FiveSidesShape = /** @class */ (function (_super) {
     __extends(FiveSidesShape, _super);
     function FiveSidesShape(x, y) {
-        var _this = _super.call(this, x, y) || this;
-        _this.shapeType = '5s shape';
-        return _this;
+        return _super.call(this, x, y) || this;
     }
     FiveSidesShape.prototype.calculateArea = function (lineX, lineY) {
         var rectArea = lineX * (2 * lineY);
@@ -39,7 +37,6 @@ var FiveSidesShape = /** @class */ (function (_super) {
             -lineX, lineY * 2,
             -lineX, lineY
         ];
-        this.shapeType = '5s shape';
         this.lineStyle(0);
         this.beginFill(this.getRandomColor());
         this.drawPolygon(path);

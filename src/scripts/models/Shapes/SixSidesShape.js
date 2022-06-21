@@ -20,9 +20,7 @@ var BasicShape_1 = require("../BasicShape");
 var SixSidesShape = /** @class */ (function (_super) {
     __extends(SixSidesShape, _super);
     function SixSidesShape(x, y) {
-        var _this = _super.call(this, x, y) || this;
-        _this.shapeType = '6s shape';
-        return _this;
+        return _super.call(this, x, y) || this;
     }
     SixSidesShape.prototype.calculateArea = function (lineX, lineY) {
         var rectArea = lineX * (2 * lineY);

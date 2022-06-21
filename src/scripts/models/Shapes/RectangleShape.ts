@@ -3,7 +3,6 @@ import { BasicShape } from "../BasicShape";
 export class RectangleShape extends BasicShape {
   constructor(x: number, y: number) {
     super(x, y);
-    this.shapeType = 'rectangle';
   }
 
   private calculateArea(w:number, h:number): number {

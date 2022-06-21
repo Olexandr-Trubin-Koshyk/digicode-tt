@@ -20,9 +20,7 @@ var BasicShape_1 = require("../BasicShape");
 var RectangleShape = /** @class */ (function (_super) {
     __extends(RectangleShape, _super);
     function RectangleShape(x, y) {
-        var _this = _super.call(this, x, y) || this;
-        _this.shapeType = 'rectangle';
-        return _this;
+        return _super.call(this, x, y) || this;
     }
     RectangleShape.prototype.calculateArea = function (w, h) {
         return Math.floor(w * h);

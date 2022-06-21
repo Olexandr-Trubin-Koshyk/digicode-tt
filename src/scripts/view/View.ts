@@ -1,5 +1,4 @@
 import { Application } from "pixi.js";
-import { EVENT_TYPES } from "../variables";
 
 export class View {
   app: Application;
@@ -11,34 +10,16 @@ export class View {
   constructor(app: Application) {
     this.app = app;
     
-    this.shapesAreaEl = document.getElementById("shapesArea");
     this.shapesCountEl = document.getElementById("shapesCount");
+    this.shapesAreaEl = document.getElementById("shapesArea");
     this.shapesPerSecondEl = document.getElementById("shapesPerSecond");
     this.shapesGravity = document.getElementById("shapesGravity");
 
-    this.updateInfo = this.updateInfo.bind(this);
+    this.updShapesAndArea = this.updShapesAndArea.bind(this);
   }
 
-  bind(event, handler) {
-    switch (event) {
-        case EVENT_TYPES.GRAVITY_UPDATE: {
-            this.shapesGravity.addEventListener('button', (event) => {
-                handler(event.target);
-            });
-            break;
-        }
-        case EVENT_TYPES.SHAPES_PER_SECOND_UPDATE: {
-            this.shapesPerSecondEl.addEventListener('button', (event) => {
-                handler(event.target);
-            });
-            break;
-        }
-        default: return;
-    }
-  }
-
-  updateInfo(coveredArea, numberOfShapes) {
-    this.shapesAreaEl.innerText = `${coveredArea} px^2`;
-    this.shapesCountEl.innerText = numberOfShapes;
+  private updShapesAndArea(shapesCount: number, shapesArea: number): void {
+    this.shapesCountEl.innerHTML = `${shapesCount}`;
+    this.shapesAreaEl.innerHTML = `${shapesArea} px^2`;
   }
 }

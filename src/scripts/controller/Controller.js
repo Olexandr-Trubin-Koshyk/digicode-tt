@@ -32,7 +32,7 @@ var Controller = /** @class */ (function (_super) {
     }
     Controller.prototype.generateShapesPerSec = function () {
         for (var i = 0; i < this.model.shapesPerSecond; i++) {
-            this.addShape(Math.floor((Math.random() * (this.model.app.screen.width - offsetX)) + offsetX / 2), Math.floor(Math.random() * (this.model.app.screen.y - offsetY)));
+            this.addShape(Math.floor((Math.random() * (this.view.app.screen.width - offsetX)) + offsetX / 2), Math.floor(Math.random() * (this.view.app.screen.y - offsetY)));
         }
     };
     Controller.prototype.onPointerDown = function (event) {
@@ -58,22 +58,21 @@ var Controller = /** @class */ (function (_super) {
         var value = 0;
         var FPS = 60;
         var step = 1;
-        this.model.app.ticker.add(function () {
+        this.view.app.ticker.add(function () {
             value += step;
             if (value % FPS === 0) {
                 _this.generateShapesPerSec();
             }
             for (var i = 0; i < _this.model.shapes.length; i++) {
                 var shape = _this.model.shapes[i];
-                if (shape.y > _this.model.app.screen.height + 200) {
+                if (shape.y > _this.view.app.screen.height + 200) {
                     _this.model.destroyShape(shape);
                 }
                 else {
                     _this.model.moveShape(shape);
                 }
             }
-            document.getElementById("shapesCount").innerHTML = "".concat(_this.model.shapes.length);
-            document.getElementById("shapesArea").innerHTML = "".concat(_this.model.shapesArea, " px^2");
+            _this.view.updShapesAndArea(_this.model.shapes.length, _this.model.shapesArea);
         });
     };
     return Controller;

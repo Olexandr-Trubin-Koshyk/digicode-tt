@@ -8,20 +8,17 @@ import { TriangleShape } from "./Shapes/TriangleShape";
 import { Shape } from "../types";
 
 export class Model {
-  app: PIXI.Application;
   shapes: Shape[];
   shapesGravity: number;
   shapesPerSecond: number;
   shapesArea: number;
 
-  constructor(app: PIXI.Application) {
-    this.app = app;
+  constructor() {
     this.shapes = [];
     this.shapesGravity = 5;
     this.shapesPerSecond = 3;
     this.shapesArea = 0;
     this.createShape = this.createShape.bind(this);
-    this.shapeRandomizer = this.shapeRandomizer.bind(this);
     this.destroyShape = this.destroyShape.bind(this);
     this.moveShape = this.moveShape.bind(this);
   } 

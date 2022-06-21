@@ -28,6 +28,7 @@ var RectangleShape = /** @class */ (function (_super) {
     RectangleShape.prototype.initShape = function () {
         var width = 60;
         var height = 80;
+        this.shapeType = 'rectangle';
         this.beginFill(this.getRandomColor());
         this.drawRect(0, 0, width, height);
         this.endFill();

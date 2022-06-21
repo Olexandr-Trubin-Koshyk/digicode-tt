@@ -15,6 +15,7 @@ export class FiveSidesShape extends BasicShape {
   public initShape(): void {
     const lineX = 35;
     const lineY = 35;
+    this.shapeType = 'fiveSidesShape';
 
     const path = [
       0, 0, 

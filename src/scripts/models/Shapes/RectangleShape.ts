@@ -12,6 +12,7 @@ export class RectangleShape extends BasicShape {
   public initShape(): void {
     const width = 60;
     const height = 80;
+    this.shapeType = 'rectangle';
 
     this.beginFill(this.getRandomColor());
     this.drawRect(0, 0, width, height);

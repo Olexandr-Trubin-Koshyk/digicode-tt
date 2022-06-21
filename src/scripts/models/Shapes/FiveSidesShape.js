@@ -30,6 +30,7 @@ var FiveSidesShape = /** @class */ (function (_super) {
     FiveSidesShape.prototype.initShape = function () {
         var lineX = 35;
         var lineY = 35;
+        this.shapeType = 'fiveSidesShape';
         var path = [
             0, 0,
             lineX, lineY,

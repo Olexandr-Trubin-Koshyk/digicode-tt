@@ -30,6 +30,7 @@ var SixSidesShape = /** @class */ (function (_super) {
     SixSidesShape.prototype.initShape = function () {
         var lineX = 35;
         var lineY = 35;
+        this.shapeType = 'sixSidesShape';
         var path = [
             0, 0,
             lineX, lineY,

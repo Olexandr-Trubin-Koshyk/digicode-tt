@@ -13,6 +13,7 @@ export class EllipseShape extends BasicShape {
   public initShape(): void {
     const width = 20;
     const height = 56;
+    this.shapeType = 'ellipse';
 
     this.beginFill(this.getRandomColor());
     this.drawEllipse(0, 0, width, height);

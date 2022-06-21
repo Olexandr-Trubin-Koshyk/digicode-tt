@@ -29,6 +29,7 @@ var TriangleShape = /** @class */ (function (_super) {
         var width = 100;
         var height = width;
         var halfWidth = width / 2;
+        this.shapeType = 'triangle';
         this.beginFill(this.getRandomColor());
         this.lineStyle(0, 0xFF0000, 1);
         this.moveTo(width, 0);

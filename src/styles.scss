@@ -43,20 +43,19 @@ body, h1 {
     width: 60%;
     gap: 30px;
   }
-}
 
-.input-group-btn {
-  margin-right: 6px;
-}
+  &__control {
+    margin-right: 6px;
+  }
 
-.btn {
-  &:focus {
-    background-color: inherit;
-    color: inherit;
-    outline: none;
+  &__button {
+    &:focus {
+      background-color: inherit;
+      color: inherit;
+      outline: none;
+    }
   }
 }
-
 
 #canvas {
   border: 1px solid #000;

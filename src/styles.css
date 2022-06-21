@@ -18,15 +18,18 @@ body, h1 {
 .mainArea__fields {
   display: flex;
   align-self: flex-start;
+  width: 100%;
 }
 .mainArea__textField {
   padding: 12px;
+  width: 30%;
   box-sizing: border-box;
   border: 1px solid #000;
   border-bottom: none;
 }
 .mainArea__textField--secondElement {
   border-left: none;
+  width: 40%;
 }
 .mainArea__controls {
   align-self: start;

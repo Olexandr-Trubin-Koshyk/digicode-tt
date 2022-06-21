@@ -15,26 +15,28 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.CircleShape = void 0;
+exports.EllipseShape = void 0;
 var BasicShape_1 = require("../BasicShape");
-var variables_1 = require("../variables");
-var CircleShape = /** @class */ (function (_super) {
-    __extends(CircleShape, _super);
-    function CircleShape(x, y) {
+var variables_1 = require("../../variables");
+var EllipseShape = /** @class */ (function (_super) {
+    __extends(EllipseShape, _super);
+    function EllipseShape(x, y) {
         var _this = _super.call(this, x, y) || this;
-        _this.shapeType = 'circle';
+        _this.shapeType = 'ellipse';
         return _this;
     }
-    CircleShape.prototype.calculateArea = function (r) {
-        return Math.floor(variables_1.PI * Math.pow(r, 2));
+    EllipseShape.prototype.calculateArea = function (w, h) {
+        return Math.floor(variables_1.PI * (w * h));
     };
-    CircleShape.prototype.initShape = function () {
-        var radius = 25;
+    EllipseShape.prototype.initShape = function () {
+        var width = 20;
+        var height = 56;
         this.beginFill(this.getRandomColor());
-        this.drawCircle(0, 0, radius);
+        this.drawEllipse(0, 0, width, height);
         this.endFill();
-        this.area = this.calculateArea(radius);
+        this.angle = this.generateAngle();
+        this.area = this.calculateArea(width, height);
     };
-    return CircleShape;
+    return EllipseShape;
 }(BasicShape_1.BasicShape));
-exports.CircleShape = CircleShape;
+exports.EllipseShape = EllipseShape;

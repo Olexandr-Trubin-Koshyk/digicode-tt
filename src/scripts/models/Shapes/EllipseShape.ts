@@ -1,22 +1,22 @@
 import { BasicShape } from "../BasicShape";
-import * as PIXI from "pixi.js";
+import { PI } from "../../variables";
 
-export class RectangleShape extends BasicShape {
+export class EllipseShape extends BasicShape {
   constructor(x: number, y: number) {
     super(x, y);
-    this.shapeType = 'rectangle';
+    this.shapeType = 'ellipse';
   }
 
-  private calculateArea(w:number, h:number): number {
-    return Math.floor(w * h);
+  private calculateArea(w: number, h: number): number {
+    return Math.floor(PI * (w * h));
   }
 
   public initShape(): void {
-    const width = 60;
-    const height = 80;
+    const width = 20;
+    const height = 56;
 
     this.beginFill(this.getRandomColor());
-    this.drawRect(0, 0, width, height);
+    this.drawEllipse(0, 0, width, height);
     this.endFill();
 
     this.angle = this.generateAngle();

@@ -12,67 +12,69 @@
   <div class="container">
     <div class="mainArea">
       <div class="mainArea__fields">
-        <span class="mainArea__textField" id="shapes"></span>
-        <span class="mainArea__textField mainArea__textField--secondElement" id="area"></span>
+        <span class="mainArea__textField">
+          Number of current shapes: 
+          <span id="shapesCount"></span>
+        </span>
+        <span class="mainArea__textField mainArea__textField--secondElement">
+          Surface area occupied by shapes:
+          <span id="shapesArea"></span>
+        </span>
       </div>
       <canvas id="canvas" width="800" height="600"></canvas>
       <div class="mainArea__controls">
-        <div class="input-group">
-          <span class="input-group-btn">
-              <button 
-                type="button" 
-                class="btn btn-default btn-number"
-                id="countDecrement"
-              >
-                <span class="glyphicon glyphicon-minus"></span>
-              </button>
-          </span>
-          <span class="input-group-btn">
+        <span class="input-group-btn">
             <button 
               type="button" 
               class="btn btn-default btn-number"
-              id="countIncrement"
+              id="countDecrement"
             >
-              <span class="glyphicon glyphicon-plus"></span>
+              <span class="glyphicon glyphicon-minus"></span>
             </button>
-          </span>
-          <input 
-            type="text" 
-            name="shapesCount" 
-            id="shapesCount"
-            class="form-control input-number" 
-            disabled 
-            value="Count: "
-          > 
-        </div>
-        <div class="input-group">
-          <span class="input-group-btn">
-              <button 
-                type="button" 
-                class="btn btn-default btn-number"
-                id="gravityDecrement"
-              >
-                <span class="glyphicon glyphicon-minus"></span>
-              </button>
-          </span>
-          <span class="input-group-btn">
-            <button 
-              type="button" 
-              class="btn btn-default btn-number"
-              id="gravityIncrement"
-            >
-              <span class="glyphicon glyphicon-plus"></span>
-            </button>
-          </span>
-          <input 
-            type="text" 
-            name="shapesGravity" 
-            id="shapesGravity"
-            class="form-control input-number" 
-            disabled 
-            value="Gravity: "
+        </span>
+        <span class="input-group-btn">
+          <button 
+            type="button" 
+            class="btn btn-default btn-number"
+            id="countIncrement"
           >
-        </div>
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+        <input 
+          type="text" 
+          name="shapesCount" 
+          id="shapesPerSecond"
+          class="form-control input-number" 
+          disabled 
+          value="Count: "
+        > 
+        <span class="input-group-btn">
+            <button 
+              type="button" 
+              class="btn btn-default btn-number"
+              id="gravityDecrement"
+            >
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+        </span>
+        <span class="input-group-btn">
+          <button 
+            type="button" 
+            class="btn btn-default btn-number"
+            id="gravityIncrement"
+          >
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+        <input 
+          type="text" 
+          name="shapesGravity" 
+          id="shapesGravity"
+          class="form-control input-number" 
+          disabled 
+          value="Gravity: "
+        >
       </div>
     </div>
   </div>

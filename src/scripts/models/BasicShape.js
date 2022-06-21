@@ -17,7 +17,7 @@ var __extends = (this && this.__extends) || (function () {
 exports.__esModule = true;
 exports.BasicShape = void 0;
 var PIXI = require("pixi.js");
-var variables_1 = require("./variables");
+var variables_1 = require("../variables");
 var BasicShape = /** @class */ (function (_super) {
     __extends(BasicShape, _super);
     function BasicShape(x, y) {

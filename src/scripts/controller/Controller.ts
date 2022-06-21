@@ -28,8 +28,8 @@ export class Controller extends PIXI.Container {
   private generateShapesPerSec(): void {
     for (let i = 0; i < this.model.shapesPerSecond; i++) {
       this.addShape(
-          Math.floor((Math.random() * (this.model.app.screen.width - offsetX)) + offsetX / 2),
-          Math.floor(Math.random() * (this.model.app.screen.y - offsetY)),
+          Math.floor((Math.random() * (this.view.app.screen.width - offsetX)) + offsetX / 2),
+          Math.floor(Math.random() * (this.view.app.screen.y - offsetY)),
       );
     }
   } 
@@ -61,7 +61,7 @@ export class Controller extends PIXI.Container {
     const FPS = 60;
     const step = 1;
 
-    this.model.app.ticker.add(() => {
+    this.view.app.ticker.add(() => {
       value += step;
 
       if (value % FPS === 0) {
@@ -71,15 +71,14 @@ export class Controller extends PIXI.Container {
       for (let i = 0; i < this.model.shapes.length; i++) {
         const shape = this.model.shapes[i];
 
-        if (shape.y > this.model.app.screen.height + 200) {
+        if (shape.y > this.view.app.screen.height + 200) {
           this.model.destroyShape(shape);
         } else {
           this.model.moveShape(shape);
         } 
       }
 
-      document.getElementById("shapesCount").innerHTML = `${this.model.shapes.length}`;
-      document.getElementById("shapesArea").innerHTML = `${this.model.shapesArea} px^2`; 
+      this.view.updShapesAndArea(this.model.shapes.length, this.model.shapesArea);
     })
   }
 }

@@ -10,7 +10,7 @@ const app = new Application({
   view: document.getElementById("canvas") as HTMLCanvasElement,
 });
 
-const model = new Model(app);
+const model = new Model();
 const view = new View(app);
 const controller = new Controller(view, model);
 app.stage.addChild(controller);

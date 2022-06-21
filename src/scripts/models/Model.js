@@ -8,14 +8,12 @@ var RectangleShape_1 = require("./Shapes/RectangleShape");
 var SixSidesShape_1 = require("./Shapes/SixSidesShape");
 var TriangleShape_1 = require("./Shapes/TriangleShape");
 var Model = /** @class */ (function () {
-    function Model(app) {
-        this.app = app;
+    function Model() {
         this.shapes = [];
         this.shapesGravity = 5;
         this.shapesPerSecond = 3;
         this.shapesArea = 0;
         this.createShape = this.createShape.bind(this);
-        this.shapeRandomizer = this.shapeRandomizer.bind(this);
         this.destroyShape = this.destroyShape.bind(this);
         this.moveShape = this.moveShape.bind(this);
     }

@@ -64,4 +64,5 @@
 <h3>Screenshots</h3>
 
 ![Screenshot #1](https://github.com/Olexandr-Trubin-Koshyk/digicode-tt/blob/main/screenshots/shapes1.png)
+
 ![Screenshot #2](https://github.com/Olexandr-Trubin-Koshyk/digicode-tt/blob/main/screenshots/shapes2.png)

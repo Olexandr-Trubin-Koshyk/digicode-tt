@@ -23,6 +23,8 @@ var FiveSidesShape_1 = require("./Shapes/FiveSidesShape");
 var RectangleShape_1 = require("./Shapes/RectangleShape");
 var SixSidesShape_1 = require("./Shapes/SixSidesShape");
 var TriangleShape_1 = require("./Shapes/TriangleShape");
+var offsetY = 200;
+var offsetX = 150;
 var GameArea = /** @class */ (function (_super) {
     __extends(GameArea, _super);
     function GameArea(app) {
@@ -53,7 +55,7 @@ var GameArea = /** @class */ (function (_super) {
     };
     GameArea.prototype.generateShapesPerSec = function () {
         for (var i = 0; i < this.shapesPerSecond; i++) {
-            this.createShape(Math.floor(Math.random() * (this.app.screen.width)), Math.floor(Math.random() * (this.app.screen.y - 400)));
+            this.createShape(Math.floor((Math.random() * (this.app.screen.width - offsetX)) + offsetX / 2), Math.floor(Math.random() * (this.app.screen.y - offsetY)));
         }
     };
     GameArea.prototype.shapeRandomizer = function (x, y) {
@@ -104,8 +106,8 @@ var GameArea = /** @class */ (function (_super) {
                     shape.y += _this.shapesGravity;
                 }
             }
-            document.getElementById("shapes").innerHTML = "Number of current shapes: ".concat(_this.shapes.length);
-            document.getElementById("area").innerHTML = "Surface area occupied by shapes: ".concat(_this.shapesArea);
+            document.getElementById("shapesCount").innerHTML = "".concat(_this.shapes.length);
+            document.getElementById("shapesArea").innerHTML = "".concat(_this.shapesArea, " px^2");
         });
     };
     return GameArea;

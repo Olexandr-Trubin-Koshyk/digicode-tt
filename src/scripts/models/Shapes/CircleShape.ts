@@ -1,5 +1,5 @@
 import { BasicShape } from "../BasicShape";
-import { PI } from "../variables";
+import { PI } from "../../variables";
 
 export class CircleShape extends BasicShape {
   constructor(x: number, y: number) {

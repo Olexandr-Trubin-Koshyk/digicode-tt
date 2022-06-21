@@ -1,6 +1,7 @@
 import { Application } from "pixi.js";
-import { GameArea } from "./GameArea";
-import { RectangleShape } from "./Shapes/RectangleShape";
+import { Controller } from "./controller/Controller";
+import { Model } from "./models/Model";
+import { View } from "./view/View";
 
 const app = new Application({
   width: 800,
@@ -9,16 +10,11 @@ const app = new Application({
   view: document.getElementById("canvas") as HTMLCanvasElement,
 });
 
-const scene = new GameArea(app);
-app.stage.addChild(scene);
+const model = new Model(app);
+const view = new View(app);
+const controller = new Controller(view, model);
+app.stage.addChild(controller);
 
-scene.createTicker();
+controller.createTicker();
 
-// function controlGravity() {
-//   const shape = new RectangleShape(100, 100);
-//   shape.initShape();
-//   app.stage.addChild(shape);
-// }
-
-// controlGravity();
 

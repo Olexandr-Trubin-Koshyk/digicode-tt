@@ -1,10 +1,8 @@
 import * as PIXI from "pixi.js";
-import { ShapeType } from "./types";
-import { ANGLE, PI } from "./variables";
+import { ShapeType } from "../types";
+import { ANGLE } from "../variables";
 
 export class BasicShape extends PIXI.Graphics {
-  color: number;
-  generatedAngle: number;
   area: number;
   interactive: boolean;
   shapeType: ShapeType;

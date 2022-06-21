@@ -26,7 +26,6 @@ var BasicShape = /** @class */ (function (_super) {
         _this.y = y;
         _this.area = 0;
         _this.interactive = true;
-        _this.shapeType = 'basic';
         return _this;
     }
     BasicShape.prototype.getRandomColor = function () {

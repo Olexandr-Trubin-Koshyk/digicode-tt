@@ -21,9 +21,7 @@ var variables_1 = require("../../variables");
 var CircleShape = /** @class */ (function (_super) {
     __extends(CircleShape, _super);
     function CircleShape(x, y) {
-        var _this = _super.call(this, x, y) || this;
-        _this.shapeType = 'circle';
-        return _this;
+        return _super.call(this, x, y) || this;
     }
     CircleShape.prototype.calculateArea = function (r) {
         return Math.floor(variables_1.PI * Math.pow(r, 2));

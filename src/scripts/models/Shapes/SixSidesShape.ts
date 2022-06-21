@@ -3,7 +3,6 @@ import { BasicShape } from "../BasicShape";
 export class SixSidesShape extends BasicShape {
   constructor(x: number, y: number) {
     super(x, y);
-    this.shapeType = '6s shape';
   }
 
   private calculateArea(lineX: number, lineY: number): number {

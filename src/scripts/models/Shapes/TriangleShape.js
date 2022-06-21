@@ -20,9 +20,7 @@ var BasicShape_1 = require("../BasicShape");
 var TriangleShape = /** @class */ (function (_super) {
     __extends(TriangleShape, _super);
     function TriangleShape(x, y) {
-        var _this = _super.call(this, x, y) || this;
-        _this.shapeType = 'triangle';
-        return _this;
+        return _super.call(this, x, y) || this;
     }
     TriangleShape.prototype.calculateArea = function (h) {
         return Math.floor(Math.pow(h, 2) * Math.sqrt(3) / 4);

@@ -4,7 +4,6 @@ import { PI } from "../../variables";
 export class EllipseShape extends BasicShape {
   constructor(x: number, y: number) {
     super(x, y);
-    this.shapeType = 'ellipse';
   }
 
   private calculateArea(w: number, h: number): number {

@@ -3,7 +3,6 @@ import { BasicShape } from "../BasicShape";
 export class FiveSidesShape extends BasicShape {
   constructor(x: number, y: number) {
     super(x, y);
-    this.shapeType = '5s shape';
   }
 
   private calculateArea(lineX: number, lineY: number): number {
@@ -25,7 +24,6 @@ export class FiveSidesShape extends BasicShape {
       -lineX, lineY
     ];
 
-    this.shapeType = '5s shape';
     this.lineStyle(0);
     this.beginFill(this.getRandomColor());
     this.drawPolygon(path);

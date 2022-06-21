@@ -28,6 +28,7 @@ var CircleShape = /** @class */ (function (_super) {
     };
     CircleShape.prototype.initShape = function () {
         var radius = 25;
+        this.shapeType = 'circle';
         this.beginFill(this.getRandomColor());
         this.drawCircle(0, 0, radius);
         this.endFill();

@@ -15,6 +15,7 @@ export class SixSidesShape extends BasicShape {
   public initShape(): void {
     const lineX = 35;
     const lineY = 35;
+    this.shapeType = 'sixSidesShape';
 
     const path = [
       0, 0, 

@@ -66,9 +66,9 @@ var Controller = /** @class */ (function (_super) {
             this.addShape(Math.floor(x), Math.floor(y));
         }
         else {
-            var shapeType_1 = event.target.constructor.name;
+            var shapeType_1 = event.target.shapeType;
             this.model.shapes.map(function (el) {
-                if (el.constructor.name === shapeType_1) {
+                if (el.shapeType === shapeType_1) {
                     el.tint = el.getRandomColor();
                 }
             });

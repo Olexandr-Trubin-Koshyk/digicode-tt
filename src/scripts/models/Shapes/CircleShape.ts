@@ -12,6 +12,7 @@ export class CircleShape extends BasicShape {
 
   public initShape() {
     const radius = 25;
+    this.shapeType = 'circle';
 
     this.beginFill(this.getRandomColor());
     this.drawCircle(0, 0, radius);

@@ -13,6 +13,7 @@ export class TriangleShape extends BasicShape {
     let width = 100;
     let height = width;
     let halfWidth = width / 2;
+    this.shapeType = 'triangle';
 
     this.beginFill(this.getRandomColor());
     this.lineStyle(0, 0xFF0000, 1);

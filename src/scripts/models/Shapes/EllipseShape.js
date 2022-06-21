@@ -29,6 +29,7 @@ var EllipseShape = /** @class */ (function (_super) {
     EllipseShape.prototype.initShape = function () {
         var width = 20;
         var height = 56;
+        this.shapeType = 'ellipse';
         this.beginFill(this.getRandomColor());
         this.drawEllipse(0, 0, width, height);
         this.endFill();

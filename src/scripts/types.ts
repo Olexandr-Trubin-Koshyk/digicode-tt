@@ -7,6 +7,15 @@ import { TriangleShape } from "./models/Shapes/TriangleShape";
 
 export type OperationType = 'increment' | 'decrement';
 
+export type ShapeType = 
+  'rectangle'
+  | 'circle'
+  | 'ellipse'
+  | 'fiveSidesShape'
+  | 'sixSidesShape'
+  | 'triangle'
+  | 'basic';
+
 export type Shape = 
   RectangleShape 
   | CircleShape 

@@ -21,10 +21,20 @@
 <h3>Control panels:</h3>
 <ul>
   <li>
-    -/+ increase or decrease the number of shapes generated per second (default value - 3); 
+    -/+ increase or decrease the number of shapes generated per second:
+         <ul>
+       <li>min value is 0 - shapes are not generated</li>
+       <li>max value - not installed</li>
+       <li>default value - 3</li>
+     </ul>
   </li>
    <li>
-    -/+ increase or decrease the gravity value (default value - 5);
+    -/+ increase or decrease the gravity value:
+     <ul>
+       <li>min value is 0 - shapes not falling</li>
+       <li>max value - not installed</li>
+       <li>default value - 3</li>
+     </ul>
    </li>
 </ul>
 <h3>Tech stack:</h3>

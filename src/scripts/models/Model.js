@@ -10,12 +10,14 @@ var TriangleShape_1 = require("./Shapes/TriangleShape");
 var Model = /** @class */ (function () {
     function Model() {
         this.shapes = [];
-        this.shapesGravity = 5;
+        this.shapesGravity = 3;
         this.shapesPerSecond = 3;
         this.shapesArea = 0;
         this.createShape = this.createShape.bind(this);
         this.destroyShape = this.destroyShape.bind(this);
         this.moveShape = this.moveShape.bind(this);
+        this.changeGravity = this.changeGravity.bind(this);
+        this.changeShapesPerSec = this.changeShapesPerSec.bind(this);
     }
     Model.prototype.shapeRandomizer = function (x, y) {
         var rnd = Math.floor(Math.random() * 6);
@@ -48,6 +50,16 @@ var Model = /** @class */ (function () {
         this.shapes = this.shapes.filter(function (el) { return el !== shape; });
         this.shapesArea -= shape.area;
         shape.destroy();
+    };
+    Model.prototype.changeGravity = function (operation) {
+        operation === 'increment'
+            ? this.shapesGravity += 1
+            : (this.shapesGravity > 0 ? this.shapesGravity -= 1 : this.shapesGravity);
+    };
+    Model.prototype.changeShapesPerSec = function (operation) {
+        operation === 'increment'
+            ? this.shapesPerSecond += 1
+            : (this.shapesPerSecond > 0 ? this.shapesPerSecond -= 1 : this.shapesPerSecond);
     };
     return Model;
 }());

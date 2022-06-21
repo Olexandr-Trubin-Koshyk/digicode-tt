@@ -4,7 +4,8 @@ import { FiveSidesShape } from "./models/Shapes/FiveSidesShape";
 import { RectangleShape } from "./models/Shapes/RectangleShape";
 import { SixSidesShape } from "./models/Shapes/SixSidesShape";
 import { TriangleShape } from "./models/Shapes/TriangleShape";
-import { Application, IHitArea } from "pixi.js";
+
+export type OperationType = 'increment' | 'decrement';
 
 export type ShapeType = 
   'basic' 
@@ -23,21 +24,3 @@ export type Shape =
   | FiveSidesShape 
   | SixSidesShape 
   | TriangleShape;
-
-  export interface View {
-    app: Application;
-    shapesCountEl: HTMLElement;
-    shapesAreaEl: HTMLElement;
-    shapesPerSecondEl: HTMLElement;
-    shapesGravity: HTMLElement;
-  }
-
-  export interface Model {
-    app: Application;
-    shapes: Shape[];
-    shapesGravity: number;
-    shapesPerSecond: number;
-    shapesArea: number;
-    interactive: boolean;
-    hitArea: IHitArea;
-  }

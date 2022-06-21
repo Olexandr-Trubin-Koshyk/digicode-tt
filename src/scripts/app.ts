@@ -11,7 +11,7 @@ const app = new Application({
 });
 
 const model = new Model();
-const view = new View(app);
+const view = new View(app.screen, app.ticker);
 const controller = new Controller(view, model);
 app.stage.addChild(controller);
 
